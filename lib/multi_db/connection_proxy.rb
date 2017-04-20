@@ -154,7 +154,7 @@ module MultiDb
       return if  master_depth > 0  # don't if in with_master block
       self.current = @slaves.next
     rescue Scheduler::NoMoreItems
-      logger.warn "[MULTIDB] All slaves are blacklisted. Reading from master"
+      # logger.warn "[MULTIDB] All slaves are blacklisted. Reading from master"
       self.current = @master
     end
 
@@ -187,8 +187,8 @@ module MultiDb
       raise
     rescue => e # TODO don't rescue everything
       raise_master_error(e) if master?
-      logger.warn "[MULTIDB] Error reading from slave database"
-      logger.error %(#{e.message}\n#{e.backtrace.join("\n")})
+      # logger.warn "[MULTIDB] Error reading from slave database"
+      # logger.error %(#{e.message}\n#{e.backtrace.join("\n")})
       @slaves.blacklist!(current)
       next_reader!
       retry
