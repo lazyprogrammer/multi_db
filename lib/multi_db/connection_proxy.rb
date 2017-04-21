@@ -47,7 +47,7 @@ module MultiDb
       # establishes the connections to the slaves.
       def setup!(scheduler = Scheduler)
         self.master_models ||= DEFAULT_MASTER_MODELS
-        self.environment   ||= (defined?(Rails) ? Rails.env : 'development')
+        self.environment   ||= ENV['RACK_ENV'] || 'development'
         self.sticky_slave  ||= false
         
         master = ActiveRecord::Base
