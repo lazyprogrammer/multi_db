@@ -56,7 +56,7 @@ module MultiDb
         master.send :include, MultiDb::ActiveRecordExtensions
         # ActiveRecord::Observer.send :include, MultiDb::ObserverExtensions
         master.connection_proxy = new(master, slaves, scheduler)
-        master.logger.info("** multi_db with master and #{slaves.length} slave#{"s" if slaves.length > 1} loaded.")
+        # master.logger.info("** multi_db with master and #{slaves.length} slave#{"s" if slaves.length > 1} loaded.")
       end
       
       protected
