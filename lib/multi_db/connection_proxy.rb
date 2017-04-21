@@ -200,7 +200,7 @@ module MultiDb
     end
     
     def raise_master_error(error)
-      logger.fatal "[MULTIDB] Error accessing master database. Scheduling reconnect"
+      # logger.fatal "[MULTIDB] Error accessing master database. Scheduling reconnect"
       @reconnect = true
       raise error
     end
